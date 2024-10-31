@@ -120,7 +120,7 @@ CreateDict() {
  * 查找单词。
  * root初始为根节点，word指向要查找的单词.
  */
-void
+int
 QueryDict(TrieNode *root, char *word) {
 	int index;
 	int wordLen = strlen(word);
@@ -130,7 +130,7 @@ QueryDict(TrieNode *root, char *word) {
 	 */
 	if (wordLen == 0 || root == NULL) {
 		fprintf(stdout, "The word not exist\n");
-		return;
+		return -1;
 	}
 
 	/*
@@ -143,10 +143,13 @@ QueryDict(TrieNode *root, char *word) {
 		 * 查到最后一个字母了，查看这个字母所在结点是否为空，为空则要查的单词不存在；
 		 * 结点不为空但是但是不构成单词，则要查的单词也不存在。
 		 */
-		if (root->child[index] && root->child[index]->inter)
+		if (root->child[index] && root->child[index]->inter) {
 			fprintf(stdout, "%s\n", root->child[index]->inter);
-		else
+			return 0;
+		}else {
 			fprintf(stdout, "The word not exist.\n");
+			return -1;
+		}
 	} else {
 		/*
 		 * 继续扫描后续字母
@@ -176,7 +179,8 @@ TestAndTolower(char *word) {
 }
 int
 main(int argc, char *argv[]) {
-	char query[200];
+	#define MAX_CHAR 200
+	char query[MAX_CHAR];
 	TrieNode *dict;
 
 	struct timeval start, end;
@@ -184,19 +188,28 @@ main(int argc, char *argv[]) {
 	dict = CreateDict();
 	gettimeofday(&end, NULL);
 
-	printf("*****建立词典耗时 %.4f s.*****\n", 1.0 * (1000000 * (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec)) / 1000000);	
-	printf("*****Input --quit for quiting.*****\n");
-	do {
-		printf(">>>>>>>");
-		scanf("%s", query);
+	if (argc == 2) {
+		strncpy(query, argv[1], MAX_CHAR -1);
 		if (TestAndTolower(query) == 0) {
-			printf("Invalid input");
-			continue;
+				printf("Invalid input");
+				return -1;
 		}
-		if(!strcmp("--quit", query))
-			break;
-		QueryDict(dict, query);
-	} while (1);
-	system("cd && clear");
+		return QueryDict(dict, query);
+	}else {
+		printf("*****建立词典耗时 %.4f s.*****\n", 1.0 * (1000000 * (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec)) / 1000000);	
+		printf("*****Input --quit for quiting.*****\n");
+		do {
+			printf(">>>>>>>");
+			scanf("%s", query);
+			if (TestAndTolower(query) == 0) {
+				printf("Invalid input");
+				continue;
+			}
+			if(!strcmp("--quit", query))
+				break;
+			QueryDict(dict, query);
+		} while (1);
+		system("cd && clear");
+	}
 	return 0;
 }

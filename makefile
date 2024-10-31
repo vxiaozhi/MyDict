@@ -1,5 +1,5 @@
 MyDict : MyDict.o
-	gcc -o MyDict MyDict.o
+	gcc -o _MyDict MyDict.o
 
 MyDict.o : MyDict.c 
 	gcc -c MyDict.c 

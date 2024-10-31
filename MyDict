@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./_MyDict $@
+if [ $? == 0 ] && [[ -n "$@" ]]; then
+    echo "$@ `date "+%Y-%m-%d %H:%M:%S"`" >> history.txt
+fi
