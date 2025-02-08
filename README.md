@@ -31,4 +31,13 @@ Windows下用于生成词典的原始词库文件需要是gbk编码，如果您�
 错误提示，如果输入单词不存在，输出正确的最长前缀单词。   
 加上音标。
 加上短语查询。   
-最终目标是翻译！   
+最终目标是翻译！
+
+## Repos for Learn English
+
+- [有道词典的命令行版本](https://github.com/ChestnutHeng/Wudao-dict)
+- [Go语言实现的简洁好用的命令行词典，跨平台、易于安装](https://github.com/Karmenzind/kd)
+- [wordsea](https://github.com/vxiaozhi/wordsea)
+- [英语四级词汇表+音频接口、含4000+单词，单词数据来源：有道词典](https://github.com/mihu915/cet4_dict)
+- [英语四六级、考研、SAT单词，txt 文件, json 文件，CET4 CET6](https://github.com/KyleBing/english-vocabulary)
+- [✨✨🎏一个网页鼠标点击特效，单击一下就会有随机的四级单词产生](https://github.com/flymysql/CET4-Mouse-click-effects)
