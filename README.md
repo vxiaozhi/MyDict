@@ -48,3 +48,4 @@ Windows下用于生成词典的原始词库文件需要是gbk编码，如果您�
 - [一本 GPT4 生成的单词书📚，超过 8000 个单词分析](https://github.com/Ceelog/DictionaryByGPT4)
 - [如何使用AI ChatGPT 帮助记忆单词，比有道翻译更牛逼更人性化！](https://zhuanlan.zhihu.com/p/625175873)
 - [📚🎨 GPT 字典：10万词汇卡片库](https://github.com/MrDalili/gptDictionary)
+- [ProWords - AI + 身份，让单词记忆更有趣、更有效](https://github.com/winterfx/ProWords)
